@@ -19,6 +19,74 @@ struct complex {
   float imag;
 };
 
+struct arguments {
+  float aReal;
+  float aImag;
+  float bReal;
+  float bImag;
+  struct ** complex result;
+  struct ** complex A;
+  struct ** complex B;
+  int k_max;
+  int i;
+  int j;
+};
+
+struct arguments * new_arguments(float aReal,float aImag, float bReal, float BImage, struct ** complex result,int k_max, int i, int j
+, struct ** complex A, struct ** complex B) {
+  struct arguments * newArgs = malloc(sizeof(struct arguments));
+  newArgs->aReal = aReal;
+  newArgs->aImag = aImag;
+  newArgs->bReal = bReal;
+  newArgs->bImag = bImag;
+  newArgs->result = result;
+  newArgs->A = A;
+  newArgs->B = B;
+  newArgs->k_max = k_max;
+  newArgs->i = i;
+  newArgs->j = j;
+  return newArgs;
+}
+
+void * calculate_element(void * args) {
+  struct arguments * arguments = (struct arguments *) args;
+  struct complex sum;
+  sum.real = 0.0;
+  sum.imag = 0.0;
+  for ( k = 0; k < arguments->k_max; k++ ) {
+    // the following code does: sum += A[i][k] * B[k][j];
+    struct complex product;
+    product.real = A[arguments->i][k].real * B[k][arguments->].real - A[arguments->][k].imag * B[k][arguments->].imag;
+    product.imag = A[arguments->][k].real * B[k][arguments->].imag + A[arguments->][k].imag * B[k][arguments->].real;
+    sum.real += product.real;
+    sum.imag += product.imag;
+  }
+  C[i][j] = sum;
+  pthread_exit(NULL);
+}
+
+void fastmul(struct complex ** A, struct complex ** B, struct complex ** C, int a_dim1, int a_dim2, int b_dim2)
+{
+  int numberOfThreads = a_dim1 * b_dim2;
+  pthread_t threads[numberOfThreads];
+  struct arguments ** threadArguments = malloc(sizeof(struct arguments) *  numberOfThreads);
+  int threadArgIndex = 0;
+  int i, j, k;
+
+  for ( i = 0; i < a_dim1; i++ ) {
+    for( j = 0; j < b_dim2; j++ ) {
+      threadArguments[threadArgIndex] = new_arguments(A[i][j].real,A[i][j].imag,B[i][j].real,B[i][j].imag,C,a_dim2,i,j,A,B);
+      pthread_create(&threads[threadArgIndex], NULL, calculate_element, (void *)threadArguments[threadArgIndex]);
+      threadArgIndex++;
+    }
+  }
+
+  for(int i=0; i < numberOfThreads; i++) {
+    pthread_join(threads[i], NULL);
+  }
+}
+
+
 /* write matrix to stdout */
 void write_out(struct complex ** a, int dim1, int dim2)
 {
@@ -126,12 +194,12 @@ void matmul(struct complex ** A, struct complex ** B, struct complex ** C, int a
       sum.real = 0.0;
       sum.imag = 0.0;
       for ( k = 0; k < a_dim2; k++ ) {
-	// the following code does: sum += A[i][k] * B[k][j];
-	struct complex product;
-	product.real = A[i][k].real * B[k][j].real - A[i][k].imag * B[k][j].imag;
-	product.imag = A[i][k].real * B[k][j].imag + A[i][k].imag * B[k][j].real;
-	sum.real += product.real;
-	sum.imag += product.imag;
+          // the following code does: sum += A[i][k] * B[k][j];
+          struct complex product;
+          product.real = A[i][k].real * B[k][j].real - A[i][k].imag * B[k][j].imag;
+          product.imag = A[i][k].real * B[k][j].imag + A[i][k].imag * B[k][j].real;
+          sum.real += product.real;
+          sum.imag += product.imag;
       }
       C[i][j] = sum;
     }
