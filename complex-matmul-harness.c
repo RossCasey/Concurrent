@@ -6,6 +6,8 @@
 #include <sys/time.h>
 #include <assert.h>
 #include <omp.h>
+#include <pthread.h>
+#include <xmmintrin.h>
 
 /* the following two definitions of DEBUGGING control whether or not
    debugging information is written out. To put the program into
@@ -24,16 +26,16 @@ struct arguments {
   float aImag;
   float bReal;
   float bImag;
-  struct ** complex result;
-  struct ** complex A;
-  struct ** complex B;
+  struct complex ** result;
+  struct complex ** A;
+  struct complex ** B;
   int k_max;
   int i;
   int j;
 };
 
-struct arguments * new_arguments(float aReal,float aImag, float bReal, float BImage, struct ** complex result,int k_max, int i, int j
-, struct ** complex A, struct ** complex B) {
+struct arguments * new_arguments(float aReal,float aImag, float bReal, float bImag, struct complex ** result,int k_max, int i, int j
+, struct complex ** A, struct complex ** B) {
   struct arguments * newArgs = malloc(sizeof(struct arguments));
   newArgs->aReal = aReal;
   newArgs->aImag = aImag;
@@ -53,15 +55,27 @@ void * calculate_element(void * args) {
   struct complex sum;
   sum.real = 0.0;
   sum.imag = 0.0;
+  float *dest = malloc(sizeof(float)*4);
+  int k;
+  __m128 part1;
+  __m128 part2;
+  __m128 res;
+  struct complex product;
+  product.real = 0.0;
+  product.imag = 0.0;
   for ( k = 0; k < arguments->k_max; k++ ) {
     // the following code does: sum += A[i][k] * B[k][j];
-    struct complex product;
-    product.real = A[arguments->i][k].real * B[k][arguments->].real - A[arguments->][k].imag * B[k][arguments->].imag;
-    product.imag = A[arguments->][k].real * B[k][arguments->].imag + A[arguments->][k].imag * B[k][arguments->].real;
-    sum.real += product.real;
-    sum.imag += product.imag;
+
+    part1 = _mm_setr_ps(arguments->A[arguments->i][k].real,arguments->A[arguments->i][k].imag,arguments->A[arguments->i][k].real,arguments->A[arguments->i][k].imag);
+    part2 = _mm_setr_ps(arguments->B[k][arguments->j].real,arguments->B[k][arguments->j].imag,arguments->B[k][arguments->j].imag,arguments->B[k][arguments->j].real);
+    res = _mm_mul_ps(part1,part2);
+
+    _mm_store_ps(dest,res);
+    sum.real += dest[0] - dest[1];
+    sum.imag += dest[2] + dest[3];
   }
-  C[i][j] = sum;
+  arguments->result[arguments->i][arguments->j] = sum;
+  free(dest);
   pthread_exit(NULL);
 }
 
@@ -81,7 +95,7 @@ void fastmul(struct complex ** A, struct complex ** B, struct complex ** C, int 
     }
   }
 
-  for(int i=0; i < numberOfThreads; i++) {
+  for(i=0; i < numberOfThreads; i++) {
     pthread_join(threads[i], NULL);
   }
 }
@@ -251,7 +265,8 @@ int main(int argc, char ** argv)
   DEBUGGING(write_out(A, a_dim1, a_dim2));
 
   /* use a simple matmul routine to produce control result */
-  matmul(A, B, control_matrix, a_dim1, a_dim2, b_dim2);
+  //matmul(A, B, control_matrix, a_dim1, a_dim2, b_dim2);
+  fastmul(A, B, control_matrix, a_dim1, a_dim2, b_dim2);
 
   /* record starting time */
   gettimeofday(&start_time, NULL);
