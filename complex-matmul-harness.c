@@ -225,7 +225,26 @@ void team_matmul(struct complex ** A, struct complex ** B, struct complex ** C, 
 {
   // this call here is just dummy code
   // insert your own code instead
+  //fastmul(A, B, C, a_dim1, a_dim2, b_dim2);
   matmul(A, B, C, a_dim1, a_dim2, b_dim2);
+}
+
+void print_matrix(struct complex ** mat, int rows, int columns) {
+  int i;
+  for(i=0; i < rows; i++) {
+    int j;
+    for(j=0; j < columns; j++) {
+      if(j==0) {
+        printf("R: %f    I: %f",mat[i][j].real, mat[i][j].imag);
+      } else {
+        printf("          R: %f    I: %f",mat[i][j].real, mat[i][j].imag);
+      }
+    }
+    printf("\n");
+  }
+
+  printf("\n\n\n");
+
 }
 
 int main(int argc, char ** argv)
@@ -258,6 +277,7 @@ int main(int argc, char ** argv)
 
   /* allocate the matrices */
   A = gen_random_matrix(a_dim1, a_dim2);
+  print_matrix(A,a_dim1, a_dim2);
   B = gen_random_matrix(b_dim1, b_dim2);
   C = new_empty_matrix(a_dim1, b_dim2);
   control_matrix = new_empty_matrix(a_dim1, b_dim2);
@@ -265,8 +285,8 @@ int main(int argc, char ** argv)
   DEBUGGING(write_out(A, a_dim1, a_dim2));
 
   /* use a simple matmul routine to produce control result */
-  //matmul(A, B, control_matrix, a_dim1, a_dim2, b_dim2);
-  fastmul(A, B, control_matrix, a_dim1, a_dim2, b_dim2);
+  matmul(A, B, control_matrix, a_dim1, a_dim2, b_dim2);
+  //fastmul(A, B, control_matrix, a_dim1, a_dim2, b_dim2);
 
   /* record starting time */
   gettimeofday(&start_time, NULL);
@@ -285,6 +305,8 @@ int main(int argc, char ** argv)
   /* now check that the team's matmul routine gives the same answer
      as the known working version */
   check_result(C, control_matrix, a_dim1, b_dim2);
+
+
 
   return 0;
 }
