@@ -12,7 +12,7 @@
 /* the following two definitions of DEBUGGING control whether or not
    debugging information is written out. To put the program into
    debugging mode, uncomment the following line: */
-/*#define DEBUGGING(_x) _x */
+//#define DEBUGGING(_x) _x
 /* to stop the printing of debugging information, use the following line: */
 #define DEBUGGING(_x)
 
@@ -21,23 +21,24 @@ struct complex {
   float imag;
 };
 
+
 struct arguments {
   struct complex ** C;
   struct complex ** A;
   struct complex ** B;
-  int max;
+  int max_k;
+  int max_j;
   int i;
-  int j;
 };
 
-struct arguments * new_arguments( struct complex ** A, struct complex ** B, struct complex ** C, int i, int j, int max) {
+struct arguments * new_arguments( struct complex ** A, struct complex ** B, struct complex ** C, int max_k, int max_j, int i) {
   struct arguments * newArgs = malloc(sizeof(struct arguments));
   newArgs->C = C;
   newArgs->A = A;
   newArgs->B = B;
-  newArgs->max = max;
+  newArgs->max_k = max_k;
   newArgs->i = i;
-  newArgs->j = j;
+  newArgs->max_j = max_j;
   return newArgs;
 }
 
@@ -47,46 +48,54 @@ void * calculate_element(void * args) {
   sum.real = 0.0;
   sum.imag = 0.0;
   float *dest = malloc(sizeof(float)*4);
-  int k;
+  int k,j;
   __m128 aPart;
   __m128 bPart;
   __m128 res;
   struct complex product;
   product.real = 0.0;
   product.imag = 0.0;
-  for ( k = 0; k < arguments->max; k++ ) {
-    // the following code does: sum += A[i][k] * B[k][j];
+  for(j = 0; j < arguments->max_j; j++) {
+    struct complex product;
+    product.real = 0.0;
+    product.imag = 0.0;
+    for ( k = 0; k < arguments->max_k; k++ ) {
+      // the following code does: sum += A[i][k] * B[k][j];
 
-    aPart = _mm_loadu_ps(&arguments->A[arguments->i][k].real);
-    bPart = _mm_loadu_ps(&arguments->B[k][arguments->j].real);
-    aPart = _mm_shuffle_ps(aPart,aPart, _MM_SHUFFLE(3,2,3,2));
-    bPart = _mm_shuffle_ps(bPart,bPart, _MM_SHUFFLE(3,2,2,3));
-    res = _mm_mul_ps(aPart,bPart);
+      aPart = _mm_loadu_ps(&arguments->A[arguments->i][k].real);
+      bPart = _mm_loadu_ps(&arguments->B[k][j].real);
+      aPart = _mm_shuffle_ps(aPart,aPart, _MM_SHUFFLE(3,2,3,2));
+      bPart = _mm_shuffle_ps(bPart,bPart, _MM_SHUFFLE(3,2,2,3));
+      res = _mm_mul_ps(aPart,bPart);
 
-    _mm_store_ps(dest,res);
-    sum.real += dest[0] - dest[1];
-    sum.imag += dest[2] + dest[3];
+      _mm_store_ps(dest,res);
+      sum.real += dest[0] - dest[1];
+      sum.imag += dest[2] + dest[3];
+    }
+    arguments->C[arguments->i][j] = sum;
   }
-  arguments->C[arguments->i][arguments->j] = sum;
-  free(dest);
+
+  //free(dest);
   pthread_exit(NULL);
 }
 
+
 void fastmul(struct complex ** A, struct complex ** B, struct complex ** C, int a_dim1, int a_dim2, int b_dim2)
 {
-  int numberOfThreads = a_dim1 * b_dim2;
+  int numberOfThreads = a_dim1;
+  printf("Number of threads: %d\n",numberOfThreads);
   pthread_t threads[numberOfThreads];
   struct arguments ** threadArguments = malloc(sizeof(struct arguments) *  numberOfThreads);
   int threadArgIndex = 0;
   int i, j, k;
 
+  printf("Staring threads\n");
   for ( i = 0; i < a_dim1; i++ ) {
-    for( j = 0; j < b_dim2; j++ ) {
-      threadArguments[threadArgIndex] = new_arguments(A,B,C,i,j,a_dim2);
-      pthread_create(&threads[threadArgIndex], NULL, calculate_element, (void *)threadArguments[threadArgIndex]);
-      threadArgIndex++;
-    }
+    threadArguments[threadArgIndex] = new_arguments(A,B,C,a_dim2,b_dim2,i);
+    pthread_create(&threads[threadArgIndex], NULL, calculate_element, (void *)threadArguments[threadArgIndex]);
+    threadArgIndex++;
   }
+  printf("Finished starting threads\n");
 
   for(i=0; i < numberOfThreads; i++) {
     pthread_join(threads[i], NULL);
@@ -222,24 +231,6 @@ void team_matmul(struct complex ** A, struct complex ** B, struct complex ** C, 
   //matmul(A, B, C, a_dim1, a_dim2, b_dim2);
 }
 
-void print_matrix(struct complex ** mat, int rows, int columns) {
-  int i;
-  for(i=0; i < rows; i++) {
-    int j;
-    for(j=0; j < columns; j++) {
-      if(j==0) {
-        printf("R: %f    I: %f",mat[i][j].real, mat[i][j].imag);
-      } else {
-        printf("          R: %f    I: %f",mat[i][j].real, mat[i][j].imag);
-      }
-    }
-    printf("\n");
-  }
-
-  printf("\n\n\n");
-
-}
-
 int main(int argc, char ** argv)
 {
   struct complex ** A, ** B, ** C;
@@ -270,7 +261,6 @@ int main(int argc, char ** argv)
 
   /* allocate the matrices */
   A = gen_random_matrix(a_dim1, a_dim2);
-  print_matrix(A,a_dim1, a_dim2);
   B = gen_random_matrix(b_dim1, b_dim2);
   C = new_empty_matrix(a_dim1, b_dim2);
   control_matrix = new_empty_matrix(a_dim1, b_dim2);
