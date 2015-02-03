@@ -22,29 +22,20 @@ struct complex {
 };
 
 struct arguments {
-  float aReal;
-  float aImag;
-  float bReal;
-  float bImag;
-  struct complex ** result;
+  struct complex ** C;
   struct complex ** A;
   struct complex ** B;
-  int k_max;
+  int max;
   int i;
   int j;
 };
 
-struct arguments * new_arguments(float aReal,float aImag, float bReal, float bImag, struct complex ** result,int k_max, int i, int j
-, struct complex ** A, struct complex ** B) {
+struct arguments * new_arguments( struct complex ** A, struct complex ** B, struct complex ** C, int i, int j, int max) {
   struct arguments * newArgs = malloc(sizeof(struct arguments));
-  newArgs->aReal = aReal;
-  newArgs->aImag = aImag;
-  newArgs->bReal = bReal;
-  newArgs->bImag = bImag;
-  newArgs->result = result;
+  newArgs->C = C;
   newArgs->A = A;
   newArgs->B = B;
-  newArgs->k_max = k_max;
+  newArgs->max = max;
   newArgs->i = i;
   newArgs->j = j;
   return newArgs;
@@ -57,24 +48,26 @@ void * calculate_element(void * args) {
   sum.imag = 0.0;
   float *dest = malloc(sizeof(float)*4);
   int k;
-  __m128 part1;
-  __m128 part2;
+  __m128 aPart;
+  __m128 bPart;
   __m128 res;
   struct complex product;
   product.real = 0.0;
   product.imag = 0.0;
-  for ( k = 0; k < arguments->k_max; k++ ) {
+  for ( k = 0; k < arguments->max; k++ ) {
     // the following code does: sum += A[i][k] * B[k][j];
 
-    part1 = _mm_setr_ps(arguments->A[arguments->i][k].real,arguments->A[arguments->i][k].imag,arguments->A[arguments->i][k].real,arguments->A[arguments->i][k].imag);
-    part2 = _mm_setr_ps(arguments->B[k][arguments->j].real,arguments->B[k][arguments->j].imag,arguments->B[k][arguments->j].imag,arguments->B[k][arguments->j].real);
-    res = _mm_mul_ps(part1,part2);
+    aPart = _mm_loadu_ps(&arguments->A[arguments->i][k].real);
+    bPart = _mm_loadu_ps(&arguments->B[k][arguments->j].real);
+    aPart = _mm_shuffle_ps(aPart,aPart, _MM_SHUFFLE(3,2,3,2));
+    bPart = _mm_shuffle_ps(bPart,bPart, _MM_SHUFFLE(3,2,2,3));
+    res = _mm_mul_ps(aPart,bPart);
 
     _mm_store_ps(dest,res);
     sum.real += dest[0] - dest[1];
     sum.imag += dest[2] + dest[3];
   }
-  arguments->result[arguments->i][arguments->j] = sum;
+  arguments->C[arguments->i][arguments->j] = sum;
   free(dest);
   pthread_exit(NULL);
 }
@@ -89,7 +82,7 @@ void fastmul(struct complex ** A, struct complex ** B, struct complex ** C, int 
 
   for ( i = 0; i < a_dim1; i++ ) {
     for( j = 0; j < b_dim2; j++ ) {
-      threadArguments[threadArgIndex] = new_arguments(A[i][j].real,A[i][j].imag,B[i][j].real,B[i][j].imag,C,a_dim2,i,j,A,B);
+      threadArguments[threadArgIndex] = new_arguments(A,B,C,i,j,a_dim2);
       pthread_create(&threads[threadArgIndex], NULL, calculate_element, (void *)threadArguments[threadArgIndex]);
       threadArgIndex++;
     }
@@ -225,8 +218,8 @@ void team_matmul(struct complex ** A, struct complex ** B, struct complex ** C, 
 {
   // this call here is just dummy code
   // insert your own code instead
-  //fastmul(A, B, C, a_dim1, a_dim2, b_dim2);
-  matmul(A, B, C, a_dim1, a_dim2, b_dim2);
+  fastmul(A, B, C, a_dim1, a_dim2, b_dim2);
+  //matmul(A, B, C, a_dim1, a_dim2, b_dim2);
 }
 
 void print_matrix(struct complex ** mat, int rows, int columns) {
