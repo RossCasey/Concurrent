@@ -26,6 +26,16 @@ struct complex ** A;
 struct complex ** B;
 
 
+struct arguments2 {
+  struct complex ** C;
+  struct complex ** A;
+  struct complex ** B;
+  int max_k;
+  int max_j;
+  int start_i;
+  int end_i;
+};
+
 struct arguments {
   struct complex ** C;
   struct complex ** A;
@@ -42,6 +52,19 @@ struct arguments * new_arguments( struct complex ** A, struct complex ** B, stru
   newArgs->B = B;
   newArgs->max_k = max_k;
   newArgs->i = i;
+  newArgs->max_j = max_j;
+  return newArgs;
+}
+
+struct arguments2 * new_arguments2( struct complex ** A, struct complex ** B, struct complex ** C, int max_k, int max_j,
+                                    int start_i, int end_i) {
+  struct arguments2 * newArgs = malloc(sizeof(struct arguments));
+  newArgs->C = C;
+  newArgs->A = A;
+  newArgs->B = B;
+  newArgs->max_k = max_k;
+  newArgs->start_i = start_i;
+  newArgs->end_i = end_i;
   newArgs->max_j = max_j;
   return newArgs;
 }
@@ -179,6 +202,97 @@ void fastmul(struct complex ** A, struct complex ** B, struct complex ** C, int 
   }
 }
 
+void * calculate_element2(void * args) {
+  struct arguments2 * arguments = (struct arguments2 *) args;
+  struct complex sum;
+  sum.real = 0.0;
+  sum.imag = 0.0;
+  float *dest = malloc(sizeof(float)*4);
+  int k,j;
+  __m128 aPart;
+  __m128 bPart;
+  __m128 res;
+  struct complex product;
+  product.real = 0.0;
+  product.imag = 0.0;
+  int i;
+  for(i=arguments->start_i; i < arguments->end_i; i++) {
+    for(j = 0; j < arguments->max_j; j++) {
+      struct complex product;
+      sum.real = 0.0;
+      sum.imag = 0.0;
+      for ( k = 0; k < arguments->max_k; k++ ) {
+        // the following code does: sum += A[i][k] * B[k][j];
+
+        aPart = _mm_loadu_ps(&(A[i][k].real));
+        aPart = _mm_shuffle_ps(aPart,aPart, _MM_SHUFFLE(1,0,1,0));
+        _mm_store_ps(dest,aPart);
+        //printf("A: \n 0: %f\n 1: %f\n 2: %f\n 3: %f\n", dest[0],dest[1],dest[2],dest[3]);
+
+        bPart = _mm_loadu_ps(&B[k][j].real);
+        bPart = _mm_shuffle_ps(bPart,bPart, _MM_SHUFFLE(0,1,1,0));
+        _mm_store_ps(dest,bPart);
+        //printf("B: \n 0: %f\n 1: %f\n 2: %f\n 3: %f\n", dest[0],dest[1],dest[2],dest[3]);
+
+
+        res = _mm_mul_ps(aPart,bPart);
+
+        _mm_store_ps(dest,res);
+
+        //printf("Res: \n 0: %f\n 1: %f\n 2: %f\n 3: %f\n", dest[0],dest[1],dest[2],dest[3]);
+
+
+
+        sum.real += (dest[0] - dest[1]);
+        //printf("Sum.real: %f\n",sum.real);
+        sum.imag += (dest[2] + dest[3]);
+        //printf("Sum.imag: %f\n",sum.imag);
+      }
+      arguments->C[i][j] = sum;
+    }
+  }
+
+  //free(dest);
+  pthread_exit(NULL);
+}
+
+void fastmul3(struct complex ** A, struct complex ** B, struct complex ** C, int a_dim1, int a_dim2, int b_dim2) {
+  int numberOfThreads = 32;
+  pthread_t threads[numberOfThreads];
+  struct arguments2 ** threadArguments = malloc(sizeof(struct arguments2) * numberOfThreads);
+  int count = 0;
+  int threadArgIndex = 0;
+  int increment = a_dim1 / numberOfThreads;
+  int nextValue;
+
+  printf("Staring threads\n");
+  while(count < a_dim1) {
+    if(count + increment >= a_dim1) {
+      nextValue = a_dim1-1;
+    } else {
+      nextValue = count+increment;
+    }
+    threadArguments[threadArgIndex] = new_arguments2(A,B,C,a_dim2,b_dim2,count, nextValue);
+    pthread_create(&threads[threadArgIndex], NULL, calculate_element2, (void *)threadArguments[threadArgIndex]);
+    threadArgIndex++;
+
+    if(nextValue == a_dim1-1) {
+      count = a_dim1;
+    } else {
+      count = nextValue;
+    }
+    printf("Count: %d\n",count);
+  }
+  printf("Finished starting threads\n");
+
+  int i;
+  for(i=0; i < numberOfThreads; i++) {
+    pthread_join(threads[i], NULL);
+  }
+
+}
+
+
 
 /* write matrix to stdout */
 void write_out(struct complex ** a, int dim1, int dim2)
@@ -233,7 +347,7 @@ struct complex ** gen_random_matrix(int dim1, int dim2)
   int seed;
 
   result = new_empty_matrix(dim1, dim2);
-  
+
   // use the microsecond part of the current time as a pseudorandom seed
   gettimeofday(&seedtime, NULL);
   seed = seedtime.tv_usec;
@@ -368,7 +482,7 @@ int main(int argc, char ** argv)
 
   // perform matrix multiplication
 
-  fastmul(A, B, C, a_dim1, a_dim2, b_dim2);
+  fastmul3(A, B, C, a_dim1, a_dim2, b_dim2);
 
   // record finishing time
   gettimeofday(&stop_time, NULL);
