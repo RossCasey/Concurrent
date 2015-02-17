@@ -435,6 +435,45 @@ void team_matmul(struct complex ** A, struct complex ** B, struct complex ** C, 
   //matmul(A, B, C, a_dim1, a_dim2, b_dim2);
 }
 
+void trans(struct complex** A, struct complex ** B, const int i, const int j, int dim1)
+{
+	__m128 row1 = _mm_loadu_ps(&A[i][j].real);	
+	__m128 row2 = _mm_loadu_ps(&A[i][j+2].real);
+	__m128 row3 = _mm_loadu_ps(&A[i+1][j].real);
+	__m128 row4 = _mm_loadu_ps(&A[i+1][j+2].real);
+
+	__m128 t1 = _mm_shuffle_ps(row1,row2, _MM_SHUFFLE(2,0,2,0));
+	__m128 t2 = _mm_shuffle_ps(row1,row2, _MM_SHUFFLE(3,1,3,1));
+	__m128 t3 = _mm_shuffle_ps(row3,row4, _MM_SHUFFLE(2,0,2,0));
+	__m128 t4 = _mm_shuffle_ps(row3,row4, _MM_SHUFFLE(3,1,3,1));
+
+	_MM_TRANSPOSE4_PS(t1, t2, t3, t4);
+	
+	_mm_storeu_ps(&B[j][i].real,t1);
+	_mm_storeu_ps(&B[j][i+dim1].real,t2);
+	_mm_storeu_ps(&B[j][i+dim1*2].real,t3);
+	_mm_storeu_ps(&B[j][i+dim1*3].real,t4);
+}
+
+struct complex ** fastTrans(struct complex** A, int dim1, int dim2)
+{
+	// Minimum 2 rows, 4 columns! i.e 2x4 matrix
+	struct complex** res = new_empty_matrix(dim2, dim1);
+	int i, j;
+	//NO idea if faster? O.o 
+	#pragma omp parallel for
+	for(i = 0; i<dim1; i+=2)
+	{
+		for(j = 0; j<dim2; j+=4)
+		{
+			int t = (j + 4)>dim2? dim2 - 4: j;
+			int t2 = (i+2)>dim1? dim1 - 2: i;
+			trans(A,res, t2, t, dim1); 
+		}
+	}
+	write_out(res, dim2, dim1);
+}
+
 int main(int argc, char ** argv)
 {
   struct complex ** C;
