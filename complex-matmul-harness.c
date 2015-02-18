@@ -426,15 +426,6 @@ void matmul(struct complex ** A, struct complex ** B, struct complex ** C, int a
   }
 }
 
-/* the fast version of matmul written by the team */
-void team_matmul(struct complex ** A, struct complex ** B, struct complex ** C, int a_dim1, int a_dim2, int b_dim2)
-{
-  // this call here is just dummy code
-  // insert your own code instead
-  fastmul2(A, B, C, a_dim1, a_dim2, b_dim2);
-  //matmul(A, B, C, a_dim1, a_dim2, b_dim2);
-}
-
 void trans(struct complex** A, struct complex ** B, const int i, const int j, int dim1)
 {
 	__m128 row1 = _mm_loadu_ps(&A[i][j].real);	
@@ -472,6 +463,90 @@ struct complex ** fastTrans(struct complex** A, int dim1, int dim2)
 		}
 	}
 	write_out(res, dim2, dim1);
+}
+
+struct fmArgs {
+	struct complex ** A;
+	struct complex ** B;
+	struct complex ** C;
+	int a_dim1;
+	int a_dim2;
+	int b_dim2;
+	int startA;
+	int endA;
+};
+
+struct fmArgs * newfmArgs(struct complex ** A, struct complex** B, struct complex ** C, int a_dim1, int a_dim2, int b_dim2, int startA, int endA)
+{
+	struct fmArgs * newA = malloc(sizeof(struct fmArgs));
+	newA -> A = A;
+	newA -> B = B;
+	newA -> C = C;
+	newA -> a_dim1 = a_dim1;
+	newA -> a_dim2 = a_dim2;
+	newA -> b_dim2 = b_dim2;
+	newA -> startA = startA;
+	newA -> endA = endA;
+}
+
+void * calcElem(void * a)
+{
+	struct fmArgs * args = (struct fmArgs *) a;
+	
+	int i;
+	for(i = args->startA; i<args->endA; i++)
+	{
+		
+	}
+	pthread_exit(NULL);
+}
+
+#define ROUND_UP(x, s) (((x)+((s)-1)) & -(s))
+
+void fasterMul(struct complex ** A, struct complex ** B, struct complex ** C, int a_dim1, int a_dim2, int b_dim2, int numThreads)
+{
+	struct complex ** transB;
+	transB = fastTrans(B, a_dim2, b_dim2);
+	
+	pthread_t threads[numThreads];
+	struct fmArgs ** args = malloc(sizeof(struct fmArgs)*numThreads);
+	
+	int threadIndex = 0;
+	int baseInc = a_dim1 / numThreads;
+	int suppInc = 1;	
+	int changeAt = a_dim1 - ((ROUND_UP(a_dim1, numThreads) - a_dim1)*baseInc);
+	
+	int i = 0;
+	
+	while(i < a_dim1)
+	{
+		//start thread for i, for baseInc + SuppInc
+		args[threadIndex] = newfmArgs(A,B,C, a_dim1, a_dim2, b_dim2, i, (baseInc + suppInc + i));
+		pthread_create(&threads[threadIndex], NULL, calcElem, (void*)args[threadIndex]);
+		
+		threadIndex ++;
+		i += baseInc + suppInc;
+		
+		if(i == changeAt)
+		{
+			suppInc = 0;
+		}
+	}
+	
+	int j;
+	for(j=0; j < numThreads; j++) 
+	{
+		pthread_join(threads[j], NULL);
+	}
+}
+
+/* the fast version of matmul written by the team */
+void team_matmul(struct complex ** A, struct complex ** B, struct complex ** C, int a_dim1, int a_dim2, int b_dim2)
+{
+  // this call here is just dummy code
+  // insert your own code instead
+  fastmul2(A, B, C, a_dim1, a_dim2, b_dim2);
+  //matmul(A, B, C, a_dim1, a_dim2, b_dim2);
 }
 
 int main(int argc, char ** argv)
