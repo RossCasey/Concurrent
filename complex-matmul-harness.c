@@ -487,17 +487,80 @@ struct fmArgs * newfmArgs(struct complex ** A, struct complex** B, struct comple
 	newA -> b_dim2 = b_dim2;
 	newA -> startA = startA;
 	newA -> endA = endA;
+	
+	return newA;
 }
 
 void * calcElem(void * a)
 {
 	struct fmArgs * args = (struct fmArgs *) a;
 	
-	int i;
+	//printf("%d %d %d %d %d \n", args->a_dim1, args->a_dim2, args->b_dim2, args->startA, args->endA);
+	
+	__m128 vA, vB, t1, t2, t3, t4, t5, t6, t7, t8, res;
+	float * zero = malloc(sizeof(float)*4);
+	float * tres = malloc(sizeof(float)*4);
+	zero[0] = 0.0f;
+	zero[1] = 0.0f;
+	zero[2] = 0.0f;
+	zero[3] = 0.0f;
+	res = _mm_loadu_ps(zero);
+	
+	float freal = 0.0f;
+	float fimag = 0.0f;
+	
+	float *dest = malloc(sizeof(float)*4);
+	
+	int i, j, k;
 	for(i = args->startA; i<args->endA; i++)
 	{
-		
+		for(j = 0; j<args->b_dim2; j++)
+		{
+			for(k=0; k<args->a_dim2; k+= 2)
+			{
+				//int t = (k + 2)>args->a_dim2 ? args->a_dim2 - 2: k;
+				
+				if(k+2 <= args->a_dim2)
+				{
+					vA = _mm_loadu_ps(&args->A[i][k].real);
+					vB = _mm_loadu_ps(&args->B[j][k].real);
+					
+					//swap real, imag in B
+					t1 = _mm_shuffle_ps(vB, vB,  _MM_SHUFFLE(2,3,0,1));
+					// A x B
+					t2 = _mm_mul_ps(vA, vB);
+					// A x shuffle B (t1)
+					t3 = _mm_mul_ps(vA, t1);
+					// shuffle t3 and t2
+					t4 = _mm_shuffle_ps(t2, t3, _MM_SHUFFLE(2,0,2,0));
+					// shuffle t3 and t2
+					t5 = _mm_shuffle_ps(t2, t3, _MM_SHUFFLE(3,1,3,1));
+					// sub t4 t5
+					t6 = _mm_sub_ps(t4, t5);
+					// add t4 t5
+					t7 = _mm_add_ps(t4, t5);
+					// get results from t6 and t7
+					// t8[0] = ac - bd(1)
+					// t8[1] = ac - bd(2)
+					// t8[2] = ad + bd(1)
+					// t8[3] = ad + bd(2)
+					t8 = _mm_shuffle_ps(t6, t7, _MM_SHUFFLE(3,2,1,0));
+					
+					res = _mm_add_ps(res, t8);
+				}
+				else
+				{
+				
+				}
+				//_mm_store_ps(dest,vA);
+				//printf("%d A: %f %f %f %f\n", args->startA, dest[0],dest[1],dest[2],dest[3]);
+			}
+			_mm_storeu_ps(tres, res);
+			freal = tres[0] + tres[1];
+			fimag = tres[2] + tres[3];
+		}
 	}
+
 	pthread_exit(NULL);
 }
 
@@ -507,7 +570,7 @@ void fasterMul(struct complex ** A, struct complex ** B, struct complex ** C, in
 {
 	struct complex ** transB;
 	transB = fastTrans(B, a_dim2, b_dim2);
-	
+	//write_out(transB, b_dim2, a_dim2);
 	pthread_t threads[numThreads];
 	struct fmArgs ** args = malloc(sizeof(struct fmArgs)*numThreads);
 	
@@ -517,11 +580,11 @@ void fasterMul(struct complex ** A, struct complex ** B, struct complex ** C, in
 	int changeAt = a_dim1 - ((ROUND_UP(a_dim1, numThreads) - a_dim1)*baseInc);
 	
 	int i = 0;
-	
+	int count = 0;
 	while(i < a_dim1)
 	{
 		//start thread for i, for baseInc + SuppInc
-		args[threadIndex] = newfmArgs(A,B,C, a_dim1, a_dim2, b_dim2, i, (baseInc + suppInc + i));
+		args[threadIndex] = newfmArgs(A,transB,C, a_dim1, a_dim2, b_dim2, i, (baseInc + suppInc + i));
 		pthread_create(&threads[threadIndex], NULL, calcElem, (void*)args[threadIndex]);
 		
 		threadIndex ++;
@@ -531,10 +594,11 @@ void fasterMul(struct complex ** A, struct complex ** B, struct complex ** C, in
 		{
 			suppInc = 0;
 		}
+		count++;
 	}
 	
 	int j;
-	for(j=0; j < numThreads; j++) 
+	for(j=0; j < count; j++) 
 	{
 		pthread_join(threads[j], NULL);
 	}
