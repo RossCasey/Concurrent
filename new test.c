@@ -171,30 +171,6 @@ void matmul(struct complex ** A, struct complex ** B, struct complex ** C, int a
 	}
 }
 
-/* multiply matrix A times matrix B and put result in matrix C */
-void matmulParallel(struct complex ** A, struct complex ** B, struct complex ** C, int a_dim1, int a_dim2, int b_dim2)
-{
-	int i, j, k;
-
-	#pragma omp parallel for
-	for ( i = 0; i < a_dim1; i++ ) {
-		for( j = 0; j < b_dim2; j++ ) {
-			struct complex sum;
-			sum.real = 0.0;
-			sum.imag = 0.0;
-			for ( k = 0; k < a_dim2; k++ ) {
-				// the following code does: sum += A[i][k] * B[k][j];
-				struct complex product;
-				product.real = A[i][k].real * B[k][j].real - A[i][k].imag * B[k][j].imag;
-				product.imag = A[i][k].real * B[k][j].imag + A[i][k].imag * B[k][j].real;
-				sum.real += product.real;
-				sum.imag += product.imag;
-			}
-			C[i][j].real = sum.real;
-			C[i][j].imag = sum.imag;
-		}
-	}
-}
 
 void trans(struct complex** A, struct complex ** B, const int i, const int j, int dim1)
 {
@@ -472,9 +448,15 @@ void fasterMul(struct complex ** A, struct complex ** B, struct complex ** C, in
 }
 
 /* the fast version of matmul written by the team */
-void team_matmul(struct complex ** A, struct complex ** B, struct complex ** C, int a_rows, int a_cols, int b_cols) {
-	//replace this
-	fasterMul(A, B, C, a_rows, a_cols, b_cols, 8);
+void team_matmul(struct complex ** A, struct complex ** B, struct complex ** C, int a_rows, int a_cols, int b_cols, int threads) {
+	//replace this;
+	if(a_rows * a_cols < (16*16)) {
+		matmul(A,B,C,a_rows, a_cols, b_cols);
+	} else if(a_rows * a_cols < (115 * 115)){
+		calcElemSerial(A, B, C, a_rows, a_cols, b_cols);
+  } else {
+		fasterMul(A, B, C, a_rows, a_cols, b_cols, 64);
+  }
 }
 
 long long time_diff(struct timeval * start, struct timeval * end) {
@@ -494,7 +476,9 @@ int main(int argc, char ** argv)
 	int a_dim1, a_dim2, b_dim1, b_dim2;
 	struct timeval pre_time, start_time, stop_time;
 
-	if ( argc != 5 ) {
+  int numberOfThreads;
+
+	if ( argc != 6 ) {
 		fprintf(stderr, "Usage: matmul-harness <A nrows> <A ncols> <B nrows> <B ncols>\n");
 		exit(1);
 	}
@@ -503,6 +487,7 @@ int main(int argc, char ** argv)
 		a_dim2 = atoi(argv[2]);
 		b_dim1 = atoi(argv[3]);
 		b_dim2 = atoi(argv[4]);
+		numberOfThreads = atoi(argv[4]);
 	}
 
 	/* check the matrix sizes are compatible */
@@ -538,8 +523,8 @@ int main(int argc, char ** argv)
 
 	/* perform matrix multiplication */
 
-	//team_matmul(A, B, C, a_dim1, a_dim2, b_dim2);
-	calcElemSerial(A, B, C, a_dim1, a_dim2, b_dim2);
+	team_matmul(A, B, C, a_dim1, a_dim2, b_dim2, numberOfThreads);
+	//calcElemSerial(A, B, C, a_dim1, a_dim2, b_dim2);
 	//matmulParallel(A,B,C,a_dim1,a_dim2,b_dim2);
 
 
@@ -559,7 +544,7 @@ int main(int argc, char ** argv)
 
 	/* now check that the team's matmul routine gives the same answer
 		as the known working version */
-	check_result(C, control_matrix, a_dim1, b_dim2);
+	//check_result(C, control_matrix, a_dim1, b_dim2);
 
 
 	/* free all matrices */
