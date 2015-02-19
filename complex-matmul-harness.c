@@ -153,9 +153,8 @@ void matmul(struct complex ** A, struct complex ** B, struct complex ** C, int a
 
 
 /*
-
-
-
+	This function performs a matrix transposition on A storing in B,
+	Starting at position i,j it works on a block of 2 rows x 4 columns
 */
 void trans(struct complex** A, struct complex ** B, const int i, const int j, int dim1)
 {
@@ -178,10 +177,12 @@ void trans(struct complex** A, struct complex ** B, const int i, const int j, in
 }
 
 
-/*
-
-
-
+/*	
+	This function computes the transpose of A and returns it, 
+	it breaks up in blocks of 2 rows by 4 columns and calls the 
+	helper function trans above. It handles the edge case by
+	redoing the previous elements to accommodate the extra one at the
+	end will never be more then 3 columns or 1 row that is redone.
 */
 struct complex ** fastTrans(struct complex** A, int dim1, int dim2)
 {
@@ -226,10 +227,10 @@ struct fmArgs * newfmArgs(struct complex ** A, struct complex** B, struct comple
 	newA -> B = B;
 	newA -> C = C;
 	newA -> a_dim1 = a_dim1;		//limit for outermost loop
-	newA -> a_dim2 = a_dim2;    //limit for inner loop
-	newA -> b_dim2 = b_dim2;    //limit for middle loop
-	newA -> startA = startA;    //starting value for outermost loop
-	newA -> endA = endA;        //end value for outermost loop
+	newA -> a_dim2 = a_dim2;    	//limit for inner loop
+	newA -> b_dim2 = b_dim2;    	//limit for middle loop
+	newA -> startA = startA;    	//starting value for outermost loop
+	newA -> endA = endA;        	//end value for outermost loop
 
 	return newA;
 }
@@ -237,13 +238,15 @@ struct fmArgs * newfmArgs(struct complex ** A, struct complex** B, struct comple
 
 
 /*
-  calcElem: this function uses sse vectors in order to multiply a row of A by a column of B. Each thread
+	calcElem: this function uses sse vectors in order to multiply a row of A by a column of B. Each thread
 	can performs at least one row * column but can complete more depending on the work load.
 
 	The parameters for each thread are stored in a the fmArgs struct.
 
 	The multiplication in this function assumes that B has been transposed. This allows for greater locality.
-	So in pratices the function is mulitplying Arow * Brow rather than the correct Arow * Bcol
+	So in practice the function is multiplying Arow * Brow rather than the correct Arow * Bcol
+	
+	It performs two complex number multiplications in a row at at time
 */
 void * calcElem(void * a)
 {
@@ -263,7 +266,6 @@ void * calcElem(void * a)
 	float freal = 0.0f;
 	float fimag = 0.0f;
 
-
 	int i, j, k;
 	for(i = args->startA; i<args->endA; i++)
 	{
@@ -274,10 +276,7 @@ void * calcElem(void * a)
 			freal = 0.0f;
 			fimag = 0.0f;
 
-
 			//complex multiplication is done like this (a + bi)(c + di) = (ac-bd) + (ad + bc)i
-
-
 			for(k=0; k<args->a_dim2; k+= 2)
 			{
 				//mulitplication is done in groups of 2, so perform this multiplication as long
@@ -346,7 +345,7 @@ void * calcElem(void * a)
 #define ROUND_UP(x, s) (((x)+((s)-1)) & -(s))
 
 /*
-  This performs the same actios as the threaded version but performs them on the entire matrix rather
+	This performs the same action as the threaded version but performs them on the entire matrix rather
 	than a subsection of the matrix. See the other function for a description of how this function
 	operates.
 */
@@ -365,8 +364,6 @@ void calcElemSerial(struct complex ** A, struct complex ** B, struct complex ** 
 	float fimag = 0.0f;
 
 	struct complex ** transB = fastTrans(B, a_dim2, b_dim2);
-
-
 
 	int i, j, k;
 	for(i = 0; i<a_dim1; i++)
@@ -415,19 +412,15 @@ void calcElemSerial(struct complex ** A, struct complex ** B, struct complex ** 
 					fimag = (A[i][k].real * transB[j][k].imag)
 								+ (A[i][k].imag * transB[j][k].real);
 				}
-				//_mm_store_ps(dest,res);
-				//printf("%d res: %f %f %f %f\n", args->startA, dest[0],dest[1],dest[2],dest[3]);
 			}
 			_mm_store_ps(tres, res);
 			freal += tres[0] + tres[1];
 			fimag += tres[2] + tres[3];
-			//printf("%d tres: %f %f %f %f\n", args->startA,  tres[0],tres[1],tres[2],tres[3]);
 
 			C[i][j].real = freal;
 			C[i][j].imag = fimag;
 		}
 	}
-
 	free(zero);
 	free(tres);
 }
