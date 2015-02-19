@@ -1,0 +1,2009 @@
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 1 microseconds
+speedup: 0.25x
+
+
+Size: %s   Time: %s 
+Matmul time: 3 microseconds
+control time : 1 microseconds
+speedup: 0.33x
+
+
+Size: %s   Time: %s 
+Matmul time: 3 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 1 microseconds
+speedup: 0.25x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 1 microseconds
+speedup: 0.25x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 1 microseconds
+speedup: 0.25x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 3 microseconds
+control time : 1 microseconds
+speedup: 0.33x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 1 microseconds
+speedup: 0.17x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 3 microseconds
+control time : 1 microseconds
+speedup: 0.33x
+
+
+Size: %s   Time: %s 
+Matmul time: 3 microseconds
+control time : 1 microseconds
+speedup: 0.33x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 1 microseconds
+speedup: 0.17x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 1 microseconds
+speedup: 0.17x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 9 microseconds
+control time : 1 microseconds
+speedup: 0.11x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 1 microseconds
+speedup: 0.17x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 1 microseconds
+speedup: 0.17x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 9 microseconds
+control time : 1 microseconds
+speedup: 0.11x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 1 microseconds
+speedup: 0.17x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 0 microseconds
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 1 microseconds
+speedup: 0.17x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 1 microseconds
+speedup: 0.17x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 3 microseconds
+speedup: 0.75x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 3 microseconds
+speedup: 0.75x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 3 microseconds
+speedup: 0.75x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 3 microseconds
+speedup: 0.75x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 3 microseconds
+speedup: 0.75x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 3 microseconds
+speedup: 0.75x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 4 microseconds
+speedup: 0.67x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 2 microseconds
+speedup: 0.50x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 2 microseconds
+speedup: 0.50x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 3 microseconds
+speedup: 0.75x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 3 microseconds
+speedup: 0.75x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 3 microseconds
+speedup: 0.75x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 4 microseconds
+speedup: 0.67x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 3 microseconds
+speedup: 0.75x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 4 microseconds
+speedup: 0.67x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 3 microseconds
+speedup: 0.75x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 3 microseconds
+speedup: 0.75x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 4 microseconds
+speedup: 0.67x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 2 microseconds
+speedup: 0.50x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 3 microseconds
+speedup: 0.75x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 1 microseconds
+speedup: 0.25x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 1 microseconds
+speedup: 0.25x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 1 microseconds
+speedup: 0.25x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 1 microseconds
+speedup: 0.25x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 1 microseconds
+speedup: 0.25x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 1 microseconds
+speedup: 0.25x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 1 microseconds
+speedup: 0.25x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 2 microseconds
+speedup: 0.33x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 1 microseconds
+speedup: 0.25x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 1 microseconds
+speedup: 0.25x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 2 microseconds
+speedup: 0.33x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 1 microseconds
+speedup: 0.25x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 1 microseconds
+speedup: 0.25x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 2 microseconds
+speedup: 0.33x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 2 microseconds
+speedup: 0.29x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 2 microseconds
+speedup: 0.50x
+
+
+Size: %s   Time: %s 
+Matmul time: 8 microseconds
+control time : 3 microseconds
+speedup: 0.38x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 8 microseconds
+control time : 3 microseconds
+speedup: 0.38x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 3 microseconds
+speedup: 0.43x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 2 microseconds
+speedup: 0.50x
+
+
+Size: %s   Time: %s 
+Matmul time: 16 microseconds
+control time : 6 microseconds
+speedup: 0.38x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 1 microseconds
+speedup: 0.25x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 2 microseconds
+speedup: 0.50x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 2 microseconds
+speedup: 0.50x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 15 microseconds
+control time : 3 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 4 microseconds
+speedup: 0.57x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 4 microseconds
+control time : 2 microseconds
+speedup: 0.50x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 10 microseconds
+control time : 3 microseconds
+speedup: 0.30x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 2 microseconds
+speedup: 0.40x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 2 microseconds
+speedup: 0.40x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 1 microseconds
+speedup: 0.17x
+
+
+Size: %s   Time: %s 
+Matmul time: 8 microseconds
+control time : 3 microseconds
+speedup: 0.38x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 2 microseconds
+speedup: 0.40x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 2 microseconds
+speedup: 0.40x
+
+
+Size: %s   Time: %s 
+Matmul time: 10 microseconds
+control time : 3 microseconds
+speedup: 0.30x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 3 microseconds
+speedup: 0.43x
+
+
+Size: %s   Time: %s 
+Matmul time: 8 microseconds
+control time : 4 microseconds
+speedup: 0.50x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 2 microseconds
+speedup: 0.40x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 3 microseconds
+speedup: 0.43x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 3 microseconds
+speedup: 0.43x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 1 microseconds
+speedup: 0.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 9 microseconds
+control time : 4 microseconds
+speedup: 0.44x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 3 microseconds
+speedup: 0.60x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 2 microseconds
+speedup: 0.40x
+
+
+Size: %s   Time: %s 
+Matmul time: 8 microseconds
+control time : 4 microseconds
+speedup: 0.50x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 3 microseconds
+speedup: 0.60x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 3 microseconds
+speedup: 0.60x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 2 microseconds
+speedup: 0.40x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 2 microseconds
+speedup: 0.40x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 3 microseconds
+speedup: 0.60x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 2 microseconds
+speedup: 0.33x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 3 microseconds
+speedup: 0.60x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 5 microseconds
+speedup: 0.45x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 3 microseconds
+speedup: 0.50x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 2 microseconds
+speedup: 0.33x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 2 microseconds
+speedup: 0.33x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 2 microseconds
+speedup: 0.33x
+
+
+Size: %s   Time: %s 
+Matmul time: 9 microseconds
+control time : 5 microseconds
+speedup: 0.56x
+
+
+Size: %s   Time: %s 
+Matmul time: 8 microseconds
+control time : 5 microseconds
+speedup: 0.62x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 4 microseconds
+speedup: 0.36x
+
+
+Size: %s   Time: %s 
+Matmul time: 9 microseconds
+control time : 4 microseconds
+speedup: 0.44x
+
+
+Size: %s   Time: %s 
+Matmul time: 10 microseconds
+control time : 9 microseconds
+speedup: 0.90x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 5 microseconds
+speedup: 0.71x
+
+
+Size: %s   Time: %s 
+Matmul time: 10 microseconds
+control time : 8 microseconds
+speedup: 0.80x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 5 microseconds
+speedup: 0.83x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 4 microseconds
+speedup: 0.67x
+
+
+Size: %s   Time: %s 
+Matmul time: 10 microseconds
+control time : 9 microseconds
+speedup: 0.90x
+
+
+Size: %s   Time: %s 
+Matmul time: 9 microseconds
+control time : 8 microseconds
+speedup: 0.89x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 5 microseconds
+speedup: 0.83x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 5 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 4 microseconds
+speedup: 0.67x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 5 microseconds
+speedup: 0.83x
+
+
+Size: %s   Time: %s 
+Matmul time: 5 microseconds
+control time : 5 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 5 microseconds
+speedup: 0.83x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 5 microseconds
+speedup: 0.83x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 4 microseconds
+speedup: 0.67x
+
+
+Size: %s   Time: %s 
+Matmul time: 9 microseconds
+control time : 8 microseconds
+speedup: 0.89x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 5 microseconds
+speedup: 0.83x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 5 microseconds
+speedup: 0.83x
+
+
+Size: %s   Time: %s 
+Matmul time: 8 microseconds
+control time : 8 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 5 microseconds
+speedup: 0.83x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 6 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 8 microseconds
+control time : 6 microseconds
+speedup: 0.75x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 6 microseconds
+speedup: 0.86x
+
+
+Size: %s   Time: %s 
+Matmul time: 10 microseconds
+control time : 10 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 5 microseconds
+speedup: 0.71x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 5 microseconds
+speedup: 0.71x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 5 microseconds
+speedup: 0.71x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 6 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 6 microseconds
+speedup: 0.86x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 5 microseconds
+speedup: 0.71x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 14 microseconds
+speedup: 2.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 10 microseconds
+control time : 9 microseconds
+speedup: 0.90x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 6 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 6 microseconds
+speedup: 0.86x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 6 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 6 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 6 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 6 microseconds
+speedup: 0.86x
+
+
+Size: %s   Time: %s 
+Matmul time: 12 microseconds
+control time : 10 microseconds
+speedup: 0.83x
+
+
+Size: %s   Time: %s 
+Matmul time: 6 microseconds
+control time : 6 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 8 microseconds
+control time : 6 microseconds
+speedup: 0.75x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 6 microseconds
+speedup: 0.86x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 6 microseconds
+speedup: 0.86x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 6 microseconds
+speedup: 0.86x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 7 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 8 microseconds
+control time : 7 microseconds
+speedup: 0.88x
+
+
+Size: %s   Time: %s 
+Matmul time: 12 microseconds
+control time : 11 microseconds
+speedup: 0.92x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 11 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 12 microseconds
+control time : 11 microseconds
+speedup: 0.92x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 11 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 11 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 6 microseconds
+speedup: 0.86x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 7 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 11 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 11 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 8 microseconds
+control time : 7 microseconds
+speedup: 0.88x
+
+
+Size: %s   Time: %s 
+Matmul time: 9 microseconds
+control time : 10 microseconds
+speedup: 1.11x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 7 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 6 microseconds
+speedup: 0.86x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 7 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 14 microseconds
+control time : 13 microseconds
+speedup: 0.93x
+
+
+Size: %s   Time: %s 
+Matmul time: 8 microseconds
+control time : 8 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 8 microseconds
+control time : 7 microseconds
+speedup: 0.88x
+
+
+Size: %s   Time: %s 
+Matmul time: 8 microseconds
+control time : 7 microseconds
+speedup: 0.88x
+
+
+Size: %s   Time: %s 
+Matmul time: 13 microseconds
+control time : 13 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 7 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 8 microseconds
+control time : 7 microseconds
+speedup: 0.88x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 7 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 8 microseconds
+control time : 8 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 8 microseconds
+control time : 8 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 7 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 9 microseconds
+control time : 7 microseconds
+speedup: 0.78x
+
+
+Size: %s   Time: %s 
+Matmul time: 8 microseconds
+control time : 6 microseconds
+speedup: 0.75x
+
+
+Size: %s   Time: %s 
+Matmul time: 8 microseconds
+control time : 7 microseconds
+speedup: 0.88x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 7 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 7 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 8 microseconds
+control time : 7 microseconds
+speedup: 0.88x
+
+
+Size: %s   Time: %s 
+Matmul time: 7 microseconds
+control time : 7 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 8 microseconds
+control time : 7 microseconds
+speedup: 0.88x
+
+
+Size: %s   Time: %s 
+Matmul time: 8 microseconds
+control time : 7 microseconds
+speedup: 0.88x
+
+
+Size: %s   Time: %s 
+Matmul time: 8 microseconds
+control time : 9 microseconds
+speedup: 1.12x
+
+
+Size: %s   Time: %s 
+Matmul time: 15 microseconds
+control time : 23 microseconds
+speedup: 1.53x
+
+
+Size: %s   Time: %s 
+Matmul time: 13 microseconds
+control time : 13 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 9 microseconds
+control time : 8 microseconds
+speedup: 0.89x
+
+
+Size: %s   Time: %s 
+Matmul time: 9 microseconds
+control time : 8 microseconds
+speedup: 0.89x
+
+
+Size: %s   Time: %s 
+Matmul time: 8 microseconds
+control time : 8 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 9 microseconds
+control time : 8 microseconds
+speedup: 0.89x
+
+
+Size: %s   Time: %s 
+Matmul time: 15 microseconds
+control time : 15 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 14 microseconds
+control time : 10 microseconds
+speedup: 0.71x
+
+
+Size: %s   Time: %s 
+Matmul time: 9 microseconds
+control time : 8 microseconds
+speedup: 0.89x
+
+
+Size: %s   Time: %s 
+Matmul time: 15 microseconds
+control time : 14 microseconds
+speedup: 0.93x
+
+
+Size: %s   Time: %s 
+Matmul time: 9 microseconds
+control time : 8 microseconds
+speedup: 0.89x
+
+
+Size: %s   Time: %s 
+Matmul time: 14 microseconds
+control time : 15 microseconds
+speedup: 1.07x
+
+
+Size: %s   Time: %s 
+Matmul time: 9 microseconds
+control time : 8 microseconds
+speedup: 0.89x
+
+
+Size: %s   Time: %s 
+Matmul time: 8 microseconds
+control time : 8 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 8 microseconds
+control time : 8 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 13 microseconds
+control time : 16 microseconds
+speedup: 1.23x
+
+
+Size: %s   Time: %s 
+Matmul time: 18 microseconds
+control time : 17 microseconds
+speedup: 0.94x
+
+
+Size: %s   Time: %s 
+Matmul time: 9 microseconds
+control time : 8 microseconds
+speedup: 0.89x
+
+
+Size: %s   Time: %s 
+Matmul time: 9 microseconds
+control time : 8 microseconds
+speedup: 0.89x
+
+
+Size: %s   Time: %s 
+Matmul time: 12 microseconds
+control time : 9 microseconds
+speedup: 0.75x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 9 microseconds
+speedup: 0.82x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 10 microseconds
+speedup: 0.91x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 10 microseconds
+speedup: 0.91x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 9 microseconds
+speedup: 0.82x
+
+
+Size: %s   Time: %s 
+Matmul time: 19 microseconds
+control time : 18 microseconds
+speedup: 0.95x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 9 microseconds
+speedup: 0.82x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 9 microseconds
+speedup: 0.82x
+
+
+Size: %s   Time: %s 
+Matmul time: 12 microseconds
+control time : 9 microseconds
+speedup: 0.75x
+
+
+Size: %s   Time: %s 
+Matmul time: 12 microseconds
+control time : 9 microseconds
+speedup: 0.75x
+
+
+Size: %s   Time: %s 
+Matmul time: 12 microseconds
+control time : 9 microseconds
+speedup: 0.75x
+
+
+Size: %s   Time: %s 
+Matmul time: 15 microseconds
+control time : 10 microseconds
+speedup: 0.67x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 9 microseconds
+speedup: 0.82x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 9 microseconds
+speedup: 0.82x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 9 microseconds
+speedup: 0.82x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 9 microseconds
+speedup: 0.82x
+
+
+Size: %s   Time: %s 
+Matmul time: 12 microseconds
+control time : 9 microseconds
+speedup: 0.75x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 10 microseconds
+speedup: 0.91x
+
+
+Size: %s   Time: %s 
+Matmul time: 12 microseconds
+control time : 10 microseconds
+speedup: 0.83x
+
+
+Size: %s   Time: %s 
+Matmul time: 12 microseconds
+control time : 9 microseconds
+speedup: 0.75x
+
+
+Size: %s   Time: %s 
+Matmul time: 10 microseconds
+control time : 11 microseconds
+speedup: 1.10x
+
+
+Size: %s   Time: %s 
+Matmul time: 16 microseconds
+control time : 22 microseconds
+speedup: 1.38x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 12 microseconds
+speedup: 1.09x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 12 microseconds
+speedup: 1.09x
+
+
+Size: %s   Time: %s 
+Matmul time: 10 microseconds
+control time : 13 microseconds
+speedup: 1.30x
+
+
+Size: %s   Time: %s 
+Matmul time: 17 microseconds
+control time : 22 microseconds
+speedup: 1.29x
+
+
+Size: %s   Time: %s 
+Matmul time: 19 microseconds
+control time : 23 microseconds
+speedup: 1.21x
+
+
+Size: %s   Time: %s 
+Matmul time: 16 microseconds
+control time : 21 microseconds
+speedup: 1.31x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 13 microseconds
+speedup: 1.18x
+
+
+Size: %s   Time: %s 
+Matmul time: 10 microseconds
+control time : 13 microseconds
+speedup: 1.30x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 12 microseconds
+speedup: 1.09x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 12 microseconds
+speedup: 1.09x
+
+
+Size: %s   Time: %s 
+Matmul time: 10 microseconds
+control time : 13 microseconds
+speedup: 1.30x
+
+
+Size: %s   Time: %s 
+Matmul time: 17 microseconds
+control time : 21 microseconds
+speedup: 1.24x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 11 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 10 microseconds
+control time : 12 microseconds
+speedup: 1.20x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 12 microseconds
+speedup: 1.09x
+
+
+Size: %s   Time: %s 
+Matmul time: 18 microseconds
+control time : 23 microseconds
+speedup: 1.28x
+
+
+Size: %s   Time: %s 
+Matmul time: 17 microseconds
+control time : 21 microseconds
+speedup: 1.24x
+
+
+Size: %s   Time: %s 
+Matmul time: 16 microseconds
+control time : 21 microseconds
+speedup: 1.31x
+
+
+Size: %s   Time: %s 
+Matmul time: 14 microseconds
+control time : 14 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 13 microseconds
+control time : 13 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 22 microseconds
+control time : 51 microseconds
+speedup: 2.32x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 14 microseconds
+speedup: 1.27x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 14 microseconds
+speedup: 1.27x
+
+
+Size: %s   Time: %s 
+Matmul time: 21 microseconds
+control time : 24 microseconds
+speedup: 1.14x
+
+
+Size: %s   Time: %s 
+Matmul time: 12 microseconds
+control time : 12 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 12 microseconds
+speedup: 1.09x
+
+
+Size: %s   Time: %s 
+Matmul time: 12 microseconds
+control time : 13 microseconds
+speedup: 1.08x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 13 microseconds
+speedup: 1.18x
+
+
+Size: %s   Time: %s 
+Matmul time: 23 microseconds
+control time : 24 microseconds
+speedup: 1.04x
+
+
+Size: %s   Time: %s 
+Matmul time: 13 microseconds
+control time : 14 microseconds
+speedup: 1.08x
+
+
+Size: %s   Time: %s 
+Matmul time: 17 microseconds
+control time : 24 microseconds
+speedup: 1.41x
+
+
+Size: %s   Time: %s 
+Matmul time: 14 microseconds
+control time : 13 microseconds
+speedup: 0.93x
+
+
+Size: %s   Time: %s 
+Matmul time: 12 microseconds
+control time : 13 microseconds
+speedup: 1.08x
+
+
+Size: %s   Time: %s 
+Matmul time: 14 microseconds
+control time : 14 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 11 microseconds
+control time : 13 microseconds
+speedup: 1.18x
+
+
+Size: %s   Time: %s 
+Matmul time: 15 microseconds
+control time : 13 microseconds
+speedup: 0.87x
+
+
+Size: %s   Time: %s 
+Matmul time: 14 microseconds
+control time : 14 microseconds
+speedup: 1.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 12 microseconds
+control time : 13 microseconds
+speedup: 1.08x
+
+
+Size: %s   Time: %s 
+Matmul time: 14 microseconds
+control time : 28 microseconds
+speedup: 2.00x
+
+
+Size: %s   Time: %s 
+Matmul time: 15 microseconds
+control time : 16 microseconds
+speedup: 1.07x
+
+
+Size: %s   Time: %s 
+Matmul time: 14 microseconds
+control time : 16 microseconds
+speedup: 1.14x
+
+
+Size: %s   Time: %s 
+Matmul time: 14 microseconds
+control time : 15 microseconds
+speedup: 1.07x
+
+
+Size: %s   Time: %s 
+Matmul time: 14 microseconds
+control time : 15 microseconds
+speedup: 1.07x
+
+
+Size: %s   Time: %s 
+Matmul time: 13 microseconds
+control time : 14 microseconds
+speedup: 1.08x
+
+
+Size: %s   Time: %s 
+Matmul time: 23 microseconds
+control time : 28 microseconds
+speedup: 1.22x
+
+
+Size: %s   Time: %s 
+Matmul time: 15 microseconds
+control time : 16 microseconds
+speedup: 1.07x
+
+
+Size: %s   Time: %s 
+Matmul time: 14 microseconds
+control time : 17 microseconds
+speedup: 1.21x
+
+
+Size: %s   Time: %s 
+Matmul time: 14 microseconds
+control time : 15 microseconds
+speedup: 1.07x
+
+
+Size: %s   Time: %s 
+Matmul time: 24 microseconds
+control time : 29 microseconds
+speedup: 1.21x
+
+
+Size: %s   Time: %s 
+Matmul time: 17 microseconds
+control time : 15 microseconds
+speedup: 0.88x
+
+
+Size: %s   Time: %s 
+Matmul time: 23 microseconds
+control time : 28 microseconds
+speedup: 1.22x
+
+
+Size: %s   Time: %s 
+Matmul time: 14 microseconds
+control time : 15 microseconds
+speedup: 1.07x
+
+
+Size: %s   Time: %s 
+Matmul time: 14 microseconds
+control time : 16 microseconds
+speedup: 1.14x
+
+
+Size: %s   Time: %s 
+Matmul time: 16 microseconds
+control time : 15 microseconds
+speedup: 0.94x
+
+
+Size: %s   Time: %s 
+Matmul time: 17 microseconds
+control time : 15 microseconds
+speedup: 0.88x
+
+
+Size: %s   Time: %s 
+Matmul time: 17 microseconds
+control time : 16 microseconds
+speedup: 0.94x
+
+
+Size: %s   Time: %s 
+Matmul time: 15 microseconds
+control time : 16 microseconds
+speedup: 1.07x
+
+
+Size: %s   Time: %s 
+Matmul time: 15 microseconds
+control time : 15 microseconds
+speedup: 1.00x
+
+
